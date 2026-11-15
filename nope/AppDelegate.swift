@@ -172,8 +172,9 @@ struct ReplacementCategory {
 extension AppDelegate: NSMenuDelegate {
 
     private static let replacementMenuTag = 4242
+    private static let launchAtLoginTag = 4243
 
-    /// Inserts one submenu per category at the top of the status menu.
+    /// Inserts one submenu per category, then "Launch at Login", at the top of the status menu.
     func addReplacementMenus() {
         for (index, category) in categories.enumerated() {
             let item = NSMenuItem(title: category.title, action: nil, keyEquivalent: "")
@@ -183,11 +184,38 @@ extension AppDelegate: NSMenuDelegate {
             statusMenu.insertItem(item, at: index)
         }
         statusMenu.insertItem(.separator(), at: categories.count)
+
+        let launchAtLogin = NSMenuItem(title: "Launch at Login", action: #selector(toggleLaunchAtLogin(_:)), keyEquivalent: "")
+        launchAtLogin.target = self
+        launchAtLogin.tag = Self.launchAtLoginTag
+        statusMenu.insertItem(launchAtLogin, at: categories.count + 1)
+        statusMenu.insertItem(.separator(), at: categories.count + 2)
+    }
+
+    // MARK: Launch at Login
+
+    @objc func toggleLaunchAtLogin(_ sender: NSMenuItem) {
+        let service = SMAppService.mainApp
+        do {
+            if service.status == .enabled || service.status == .requiresApproval {
+                try service.unregister()
+            } else {
+                try service.register()
+            }
+        } catch {
+            NSLog("nope: Launch at Login change failed: \(error)")
+        }
+        // The user turned it off in System Settings before; macOS needs them to re-allow it there.
+        if service.status == .requiresApproval {
+            SMAppService.openSystemSettingsLoginItems()
+        }
     }
 
     /// Rebuilds the submenus each time the menu opens, so checkmarks and "not installed" stay current.
     func menuNeedsUpdate(_ menu: NSMenu) {
         guard menu === statusMenu else { return }
+        // Read the real state each time, so it's right even if changed in System Settings.
+        statusMenu.item(withTag: Self.launchAtLoginTag)?.state = SMAppService.mainApp.status == .enabled ? .on : .off
         for item in statusMenu.items where item.tag == Self.replacementMenuTag {
             guard let index = item.representedObject as? Int, let submenu = item.submenu else { continue }
             fillSubmenu(submenu, for: categories[index])

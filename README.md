@@ -17,18 +17,25 @@ nope is based on [noTunes](https://github.com/tombonez/noTunes) by Tom Taylor.
 
 ## Installation
 
+### Homebrew
+
+```bash
+brew install --cask zemendes1/tap/nope
+```
+
 ### Direct Download
 
-Download the latest release from the [Releases page](https://github.com/zemendes1/nope/releases/latest).
+Download the latest release from the [Releases page](https://github.com/zemendes1/nope/releases/latest), unzip it and move `nope.app` to Applications.
+
+### First launch
+
+nope isn't notarized by Apple yet, so macOS blocks it the first time you open it. Go to **System Settings → Privacy & Security**, scroll down and click **Open Anyway** next to nope. After that it opens normally.
 
 ## Usage
 
-### Set nope to launch at startup
+### Launch at login
 
-1. Navigate to System Settings
-2. Select General
-3. Select Login Items
-4. Click the + under Open at Login and select nope
+Right-click or control-click the menu bar icon and click **Launch at Login**. Click it again to turn it off.
 
 ### Toggle nope
 
@@ -52,14 +59,6 @@ Right-click or control-click the menu bar icon, then pick from:
 - **Instead of Games, open**: Steam, Epic Games Launcher, or any app via **Choose App…**
 
 Apps that aren't installed are greyed out. Pick **Nothing** to turn a replacement off.
-
-You can also set them from Terminal with an app path, a website, or a bundle ID. The keys are `replacement` (Music) and `gamesReplacement` (Games):
-
-```bash
-defaults write com.zemendes1.nope replacement https://music.youtube.com/
-defaults write com.zemendes1.nope gamesReplacement /Applications/Steam.app
-defaults delete com.zemendes1.nope replacement
-```
 
 ## Support
 
