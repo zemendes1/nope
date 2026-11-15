@@ -15,6 +15,10 @@ Left-click the menu bar icon to turn it on or off.
 
 nope is based on [noTunes](https://github.com/tombonez/noTunes) by Tom Taylor.
 
+<img src="screenshots/menu-bar.png" width="100%" alt="nope icon in the macOS menu bar">
+
+<img src="screenshots/menu-in-context.png" width="387" alt="nope menu open in the macOS menu bar">
+
 ## Installation
 
 ### Homebrew
@@ -36,6 +40,8 @@ nope isn't notarized by Apple yet, so macOS blocks it the first time you open it
 ### Launch at login
 
 Right-click or control-click the menu bar icon and click **Launch at Login**. Click it again to turn it off.
+
+<img src="screenshots/menu.png" width="261" alt="nope menu with Launch at Login checked">
 
 ### Toggle nope
 
