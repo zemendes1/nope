@@ -23,20 +23,14 @@ Download the latest release from the [Releases page](https://github.com/zemendes
 
 ## Usage
 
-### Set noTunes to launch at startup
-
-#### Ventura and later:
+### Set nope to launch at startup
 
 1. Navigate to System Settings
 2. Select General
 3. Select Login Items
-4. Click the + under Open at Login and select noTunes
+4. Click the + under Open at Login and select nope
 
-#### Before Ventura:
-
-Navigate to System Preferences -> Users & Groups. Under your user, select "Login Items", click the lock on the bottom left and enter your login password to make changes. Click the plus sign (+) in the main panel and search for noTunes. Select it and click "Add".
-
-### Toggle noTunes Functionality
+### Toggle nope
 
 Left click the menu bar icon to toggle between its active states.
 
@@ -48,54 +42,23 @@ Left click the menu bar icon to toggle between its active states.
 
 ![nope disabled](/screenshots/menubar-disabled.png)
 
-### Hide Menu Bar Icon
+### Open something else instead
 
-Right click or control-click the menu bar icon and click `Hide Icon`.
+nope can open another app or website whenever a blocked app tries to launch.
 
-### Restore Menu Bar Icon
+Right-click or control-click the menu bar icon, then pick from:
 
-[Quit noTunes](#quit-notunes), run the following command in Terminal and re-open the app:
+- **Instead of Music, open**: Spotify, TIDAL, YouTube Music (web), SoundCloud (web), or any app via **Choose App…**
+- **Instead of Games, open**: Steam, Epic Games Launcher, or any app via **Choose App…**
 
-```bash
-defaults delete digital.twisted.noTunes
-```
+Apps that aren't installed are greyed out. Pick **Nothing** to turn a replacement off.
 
-### Quit noTunes
-
-To quit the app either:
-
-**With menu bar icon visible**
-
-Right click or control-click the menu bar icon and click quit.
-
-**With menu bar icon hidden**
-
-Quit the app via Activity Monitor or run the following command in Terminal:
+You can also set them from Terminal with an app path, a website, or a bundle ID. The keys are `replacement` (Music) and `gamesReplacement` (Games):
 
 ```bash
-osascript -e 'quit app "noTunes"'
-```
-
-### Set replacement for iTunes / Apple Music
-
-Replace `YOUR_MUSIC_APP` with the name of your music app in the following command.
-
-```bash
-defaults write digital.twisted.noTunes replacement /Applications/YOUR_MUSIC_APP.app
-```
-
-Then `/Applications/YOUR_MUSIC_APP.app` will launch when iTunes/Music attempts to launch.
-
-This can be used to open a website too, for example, YouTube Music.
-
-```bash
-defaults write digital.twisted.noTunes replacement https://music.youtube.com/
-```
-
-The following command will disable the replacement.
-
-```bash
-defaults delete digital.twisted.noTunes replacement
+defaults write com.zemendes1.nope replacement https://music.youtube.com/
+defaults write com.zemendes1.nope gamesReplacement /Applications/Steam.app
+defaults delete com.zemendes1.nope replacement
 ```
 
 ## Support
