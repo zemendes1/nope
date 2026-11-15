@@ -1,4 +1,4 @@
-[![noTunes Logo](/screenshots/app-icon.png)](https://github.com/zemendes1/nope)
+[![nope logo](/screenshots/app-icon.png)](https://github.com/zemendes1/nope)
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/zemendes1/nope)](https://github.com/zemendes1/nope/releases/latest)
 [![GitHub all releases](https://img.shields.io/github/downloads/zemendes1/nope/total)](https://github.com/zemendes1/nope/releases)
@@ -42,11 +42,11 @@ Left click the menu bar icon to toggle between its active states.
 
 **Enabled (prevents iTunes/Music from opening)**
 
-![noTunes Enabled](/screenshots/menubar-enabled.png)
+![nope enabled](/screenshots/menubar-enabled.png)
 
 **Disabled (allows iTunes/Music to open)**
 
-![noTunes Disabled](/screenshots/menubar-disabled.png)
+![nope disabled](/screenshots/menubar-disabled.png)
 
 ### Hide Menu Bar Icon
 
