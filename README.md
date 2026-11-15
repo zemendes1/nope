@@ -25,16 +25,10 @@ Download the latest release from the [Releases page](https://github.com/zemendes
 
 ### Set nope to launch at startup
 
-#### Ventura and later:
-
 1. Navigate to System Settings
 2. Select General
 3. Select Login Items
 4. Click the + under Open at Login and select nope
-
-#### Before Ventura:
-
-Navigate to System Preferences -> Users & Groups. Under your user, select "Login Items", click the lock on the bottom left and enter your login password to make changes. Click the plus sign (+) in the main panel and search for nope. Select it and click "Add".
 
 ### Toggle nope
 
@@ -47,34 +41,6 @@ Left click the menu bar icon to toggle between its active states.
 **Disabled (allows iTunes/Music to open)**
 
 ![nope disabled](/screenshots/menubar-disabled.png)
-
-### Hide Menu Bar Icon
-
-Right click or control-click the menu bar icon and click `Hide Icon`.
-
-### Restore Menu Bar Icon
-
-[Quit nope](#quit-nope), run the following command in Terminal and re-open the app:
-
-```bash
-defaults delete com.zemendes1.nope
-```
-
-### Quit nope
-
-To quit the app either:
-
-**With menu bar icon visible**
-
-Right click or control-click the menu bar icon and click quit.
-
-**With menu bar icon hidden**
-
-Quit the app via Activity Monitor or run the following command in Terminal:
-
-```bash
-osascript -e 'quit app "nope"'
-```
 
 ### Open something else instead
 
